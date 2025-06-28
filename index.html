@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¡Bienvenida a China (otra vez)! 🇨🇳</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            background: linear-gradient(145deg, #e0f7fa, #fff8e1);
+            font-family: "Segoe UI", sans-serif;
+            text-align: center;
+            color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .floating-emoji {
+            position: absolute;
+            animation: floatUp linear infinite;
+            opacity: 0.8;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.3s, opacity 0.3s;
+            z-index: 0;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0vh) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(-120vh) rotate(360deg);
+            }
+        }
+
+        .pop {
+            animation: popEffect 0.4s ease-out forwards;
+        }
+
+        @keyframes popEffect {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        .card {
+            background: #ffffffcc;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .message-box {
+            background-color: #ffe0b2;
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            animation: fadein 1s ease-in-out;
+        }
+
+        @keyframes fadein {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        button {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #fb8c00;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #555;
+            z-index: 10;
+            position: relative;
+        }
+
+        .stress-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 2rem;
+        }
+
+        .stress-button {
+            font-size: 2.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .stress-button.shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-10px);
+            }
+
+            40% {
+                transform: translateX(10px);
+            }
+
+            60% {
+                transform: translateX(-10px);
+            }
+
+            80% {
+                transform: translateX(10px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .hit-effect {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: red;
+            opacity: 0;
+            animation: hitPop 0.6s ease-out;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        @keyframes hitPop {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, 0) scale(0.5);
+            }
+
+            30% {
+                opacity: 1;
+                transform: translate(-50%, -10px) scale(1.2);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -30px) scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="emoji">CN-SP✈️💥</div>
+        <h1>¡Felicidades, Petit Cactus 🌵 superviviente!</h1>
+        <p>
+            Has aterrizado en <strong>China</strong>, ¡Con ganas de acabar con todos ellos 🥷!<br />
+            Protege y lucha por... <strong> la batería externa</strong>, acaba con el arroz tres delicias!!🍚
+        </p>
+
+        <div id="message" class="message-box">
+            Casi casi ya estás en casa, ¡aguanta un poco más! 💪
+        </div>
+
+        <button onclick="nextMessage()">Ver otro mensajito 😉</button>
+
+        <!-- Espacio entre botones -->
+        <br>
+
+        <!-- Botón anti-estrés 👲 con contenedor -->
+        <div class="stress-container">
+            <div id="hit" class="hit-effect"></div>
+            <button id="stressBtn" class="stress-button" title="Anti-estrés">👲</button>
+        </div>
+
+        <div class="footer">
+            Hecha especialmente para ti ✈️💖<br />
+            PD: Esta vez guarda la batería en el zapato, nadie lo sabrá...chssss 🥷
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "¡Ya has superado la parte más dura! Bueno, casi 😜",
+            "¡Ojo con los snacks de aeropuerto, que parecen sushi pero no lo son! 🍣❓",
+            "Pronto estarás en casa y podrás dormir sin sentirte en una lata de atún",
+            "¡Eres mi viajera favorita! :3✈️",
+            "¡Queda el último salto, como en Mario Bros! ✨",
+            "Tu energía es más valiosa que esa batería que te quitaron 😂🔋"
+        ];
+
+        let index = 1;
+        function nextMessage() {
+            const msgBox = document.getElementById("message");
+            msgBox.style.opacity = 0;
+            setTimeout(() => {
+                msgBox.innerText = messages[index % messages.length];
+                msgBox.style.opacity = 1;
+                index++;
+            }, 300);
+        }
+
+        window.onload = () => {
+            const emojis = ['🗻', '🍣', '🎌', '🌸', '🦊', '🛫'];
+            for (let i = 0; i < 25; i++) {
+                const emoji = document.createElement("div");
+                emoji.className = "floating-emoji";
+                emoji.style.left = `${Math.random() * 100}vw`;
+                emoji.style.bottom = `0px`;
+                emoji.style.fontSize = `${1.5 + Math.random() * 1.5}rem`;
+                emoji.style.animationDuration = `${10 + Math.random() * 10}s`;
+                emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+                emoji.addEventListener("click", () => {
+                    emoji.classList.add("pop");
+                    setTimeout(() => emoji.remove(), 400);
+                });
+
+                document.body.appendChild(emoji);
+            }
+
+            const stressBtn = document.getElementById('stressBtn');
+            const hitEffect = document.getElementById('hit');
+            const effects = ['¡PAM!', '¡OUCH!', '¡BAM!', '¡ZAS!', '¡KIAI!'];
+
+            stressBtn.addEventListener('click', () => {
+                stressBtn.classList.add('shake');
+                const effect = effects[Math.floor(Math.random() * effects.length)];
+                hitEffect.innerText = effect;
+                hitEffect.style.animation = 'none';
+                void hitEffect.offsetWidth; // trigger reflow
+                hitEffect.style.animation = 'hitPop 0.6s ease-out';
+
+                setTimeout(() => {
+                    stressBtn.classList.remove('shake');
+                }, 500);
+            });
+        };
+    </script>
+
+</body>
+
+</html>
