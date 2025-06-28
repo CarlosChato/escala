@@ -18,12 +18,19 @@
             font-family: "Segoe UI", sans-serif;
             text-align: center;
             color: #333;
-            overflow: hidden;
+            /* overflow: hidden;  quitado para permitir scroll */
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
+            /* alinear contenido al principio verticalmente */
             align-items: center;
+            /* centrar horizontalmente */
             flex-direction: column;
             position: relative;
+            padding: 1rem 0;
+            /* un poco de espacio arriba y abajo */
+            min-height: 100vh;
+            /* para que ocupe al menos toda la pantalla */
+            box-sizing: border-box;
         }
 
         .floating-emoji {
@@ -75,6 +82,10 @@
             max-width: 600px;
             position: relative;
             z-index: 10;
+            margin-bottom: 2rem;
+            /* para que no quede tan pegado abajo */
+            width: 90vw;
+            box-sizing: border-box;
         }
 
         h1 {
@@ -229,7 +240,7 @@
 
         <button onclick="nextMessage()">Ver otro mensajito 😉</button>
 
-        <br>
+        <br />
 
         <div class="stress-container">
             <div id="hit" class="hit-effect"></div>
